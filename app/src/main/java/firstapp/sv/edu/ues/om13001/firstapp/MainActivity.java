@@ -206,11 +206,11 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 break;
 
             case R.id.b_clear_text:
-                limpiar();
+                edit.setText("");
                 break;
 
             case R.id.b_clear_mem:
-                limpiar();
+                edit.setText("");
                 actual_val = 0;
                 previous_val = 0;
         }
