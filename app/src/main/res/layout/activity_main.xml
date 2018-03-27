@@ -13,10 +13,11 @@
         android:layout_marginTop="@dimen/parent_margin"
         android:orientation="vertical">
 
-        <EditText
+        <TextView
             android:id="@+id/editor"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:background="@color/colorButton"
             android:layout_marginLeft="@dimen/parent_margin"
             android:layout_marginRight="@dimen/parent_margin"
             android:layout_marginTop="@dimen/margin_top_first"
@@ -35,7 +36,7 @@
                 android:layout_height="wrap_content"
                 android:minWidth="@dimen/max_button_width"
                 android:minHeight="@dimen/max_button_height"
-                android:background="@color/colorPrimary"
+                android:background="@color/colorSpecial"
                 android:layout_marginLeft="@dimen/button_margin"
                 android:layout_marginRight="@dimen/button_margin"
                 android:text="@string/clear_text"
@@ -46,7 +47,7 @@
                 android:layout_height="wrap_content"
                 android:minWidth="@dimen/max_button_width"
                 android:minHeight="@dimen/max_button_height"
-                android:background="@color/colorPrimary"
+                android:background="@color/colorSpecial"
                 android:layout_marginRight="@dimen/button_margin"
                 android:text="@string/clear_mem"
                 android:textSize="@dimen/button_text_size"/>
@@ -115,7 +116,7 @@
                 android:layout_height="wrap_content"
                 android:minWidth="@dimen/max_button_width"
                 android:minHeight="@dimen/max_button_height"
-                android:background="@color/colorButton"
+                android:background="@color/colorPrimary"
                 android:layout_marginRight="@dimen/button_margin"
                 android:text="@string/division"
                 android:textSize="@dimen/button_text_size"/>
@@ -166,7 +167,7 @@
                 android:layout_height="wrap_content"
                 android:minWidth="@dimen/max_button_width"
                 android:minHeight="@dimen/max_button_height"
-                android:background="@color/colorButton"
+                android:background="@color/colorPrimary"
                 android:layout_marginRight="@dimen/button_margin"
                 android:text="@string/product"
                 android:textSize="@dimen/button_text_size"/>
@@ -214,7 +215,7 @@
                 android:layout_height="wrap_content"
                 android:minWidth="@dimen/max_button_width"
                 android:minHeight="@dimen/max_button_height"
-                android:background="@color/colorButton"
+                android:background="@color/colorPrimary"
                 android:layout_marginRight="@dimen/button_margin"
                 android:text="@string/plus"
                 android:textSize="@dimen/button_text_size"/>
@@ -231,7 +232,7 @@
                 android:layout_height="wrap_content"
                 android:minWidth="@dimen/max_button_width"
                 android:minHeight="@dimen/max_button_height"
-                android:background="@color/colorSpecial"
+                android:background="@color/colorButton"
                 android:layout_marginLeft="@dimen/button_margin"
                 android:layout_marginRight="@dimen/button_margin"
                 android:text="@string/dot"
@@ -252,7 +253,7 @@
                 android:layout_height="wrap_content"
                 android:minWidth="@dimen/max_button_width"
                 android:minHeight="@dimen/max_button_height"
-                android:background="@color/colorSpecial"
+                android:background="@color/colorButton"
                 android:layout_marginRight="@dimen/button_margin"
                 android:text="@string/equals"
                 android:textSize="@dimen/button_text_size"/>
@@ -262,7 +263,7 @@
                 android:layout_height="wrap_content"
                 android:minWidth="@dimen/max_button_width"
                 android:minHeight="@dimen/max_button_height"
-                android:background="@color/colorButton"
+                android:background="@color/colorPrimary"
                 android:layout_marginRight="@dimen/button_margin"
                 android:text="@string/minus"
                 android:textSize="@dimen/button_text_size"/>
