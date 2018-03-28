@@ -9,7 +9,7 @@ import firstapp.sv.edu.ues.om13001.firstapp.EOperacion;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
 
-    TextView edit;
+    TextView edit, operations;
     double actual_val = 0;
     double previous_val = 0;
     //flag usado para borrar la pantalla si se ingresa otro numero luego de una operacion
@@ -29,6 +29,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         setContentView(R.layout.activity_main);
 
         edit = (TextView) findViewById(R.id.editor);
+        operations = (TextView) findViewById(R.id.operations);
 
         clear_text = (Button) findViewById(R.id.b_clear_text);
         clear_text.setOnClickListener(this);
@@ -178,24 +179,32 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
  */
             case R.id.b_minus:
                 asignar();
+                operations.setText(edit.getText() + "" + minus.getText());
+                edit.setText("");
                 op = EOperacion.RESTA;
                 flag = true;
                 break;
 
             case R.id.b_plus:
                 asignar();
+                operations.setText(edit.getText() + "" + plus.getText());
+                edit.setText("");
                 op = EOperacion.SUMA;
                 flag = true;
                 break;
 
             case R.id.b_product:
                 asignar();
+                operations.setText(edit.getText() + "" + product.getText());
+                edit.setText("");
                 op = EOperacion.MULTIPLICACION;
                 flag = true;
                 break;
 
             case R.id.b_div:
                 asignar();
+                operations.setText(edit.getText() + "" + div.getText());
+                edit.setText("");
                 op = EOperacion.DIVISION;
                 flag = true;
                 break;
@@ -211,12 +220,15 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
             case R.id.b_clear_mem:
                 edit.setText("");
+                operations.setText("");
                 actual_val = 0;
                 previous_val = 0;
         }
     }
 
     public void operacion (EOperacion o){
+
+        int entero;
 
         switch (o) {
             case SUMA:
@@ -239,8 +251,14 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 previous_val = actual_val;
                 break;
         }
-
-        edit.setText(""+previous_val);
+        operations.setText(operations.getText().toString() + edit.getText());
+        entero = (int) previous_val;
+        if (entero < previous_val) {
+            edit.setText("" + previous_val);
+        }
+        else {
+            edit.setText("" + entero);
+        }
         symbol = true;
         flag = true;
     }
