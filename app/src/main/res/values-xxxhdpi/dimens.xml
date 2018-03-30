@@ -15,6 +15,7 @@
     <dimen name="max_button_width">84dp</dimen>
     <dimen name="max_button_height">68dp</dimen>
     <dimen name="button_margin">10dp</dimen>
+    <dimen name="large_button_width">178dp</dimen>
 
     <!-- TextView sizes-->
     <dimen name="height_edit">100dp</dimen>

@@ -10,18 +10,19 @@ import firstapp.sv.edu.ues.om13001.firstapp.EOperacion;
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
 
     TextView edit, operations;
-    double actual_val = 0;
-    double previous_val = 0;
-    //flag usado para borrar la pantalla si se ingresa otro numero luego de una operacion
-    //symbol es para asegurar que no se use más de un punto
-    boolean symbol = true, flag = true;
-    //op para saber cual fue la operacion anterior
-    EOperacion op = EOperacion.NONE;
-    Button clear_text, clear_mem, open, close;
+
+    Button clear_text, clear_mem;
     Button seven, eight, nine, div;
     Button four, five, six, product;
     Button one, two, three, plus;
     Button dot, zero, equal, minus;
+
+    double actual_val = 0, previous_val = 0;
+    //flag usado para borrar la pantalla si se ingresa otro numero luego de una operacion
+    //symbol es para asegurar que no se use más de un punto
+    boolean punto = true, flag = true, igual = true;
+    //op para saber cual fue la operacion anterior
+    EOperacion op = EOperacion.NONE;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -36,12 +37,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
         clear_mem = (Button) findViewById(R.id.b_clear_mem);
         clear_mem.setOnClickListener(this);
-
-        open = (Button) findViewById(R.id.b_open);
-        open.setOnClickListener(this);
-
-        close = (Button) findViewById(R.id.b_close);
-        close.setOnClickListener(this);
 
         seven = (Button) findViewById(R.id.b_seven);
         seven.setOnClickListener(this);
@@ -96,11 +91,11 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     public void onClick(View v) {
         switch (v.getId()) {
             case R.id.b_dot:
-                if (symbol) {
+                if (punto) {
                     edit.setText(
                             edit.getText().toString() + dot.getText()
                     );
-                    symbol = false;
+                    punto = false;
                 }
 
                 break;
@@ -174,9 +169,10 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                         edit.getText().toString() + nine.getText()
                 );
                 break;
-/*
-    Los metodos de las operaciones hacen uso de la enumeracion EOperacion
- */
+            /*
+             * Los metodos de las operaciones hacen uso de la enumeracion EOperacion,
+             * asignan a la variable op el tipo de la última operacion agregada
+             */
             case R.id.b_minus:
                 asignar();
                 operations.setText(edit.getText() + "" + minus.getText());
@@ -210,8 +206,12 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 break;
 
             case R.id.b_equal:
-                asignar();
-                operacion(op);
+                if (igual) {
+                    asignar();
+                    operacion(op);
+                    igual = false;
+                    op = EOperacion.NONE;
+                }
                 break;
 
             case R.id.b_clear_text:
@@ -226,56 +226,73 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         }
     }
 
+    //Selecciona una operación dependiendo haciendo uso de EOperaciones
     public void operacion (EOperacion o){
-
-        int entero;
 
         switch (o) {
             case SUMA:
                 previous_val += actual_val;
+                operations.setText(operations.getText().toString() + edit.getText());
+                resultado();
                 break;
 
             case RESTA:
                 previous_val -= actual_val;
+                operations.setText(operations.getText().toString() + edit.getText());
+                resultado();
                 break;
 
             case MULTIPLICACION:
                 previous_val *= actual_val;
+                operations.setText(operations.getText().toString() + edit.getText());
+                resultado();
                 break;
 
             case DIVISION:
                 previous_val /= actual_val;
+                operations.setText(operations.getText().toString() + edit.getText());
+                resultado();
                 break;
 
             case NONE:
                 previous_val = actual_val;
                 break;
         }
-        operations.setText(operations.getText().toString() + edit.getText());
-        entero = (int) previous_val;
-        if (entero < previous_val) {
-            edit.setText("" + previous_val);
-        }
-        else {
-            edit.setText("" + entero);
-        }
-        symbol = true;
+
+        punto = true;
         flag = true;
     }
 
+    //Sirve para limpiar la pantalla si se ha realizado una operacion antes y se ingresa de nuevo un número
     public void limpiar() {
         if (flag) {
             edit.setText("");
             flag = false;
         }
+        igual = true;
     }
 
+    //Asigna el valor que está en el TextView a la variable actual_val y reemplaza el valor anterior
     public void asignar() {
         previous_val = actual_val;
         if (!edit.getText().toString().isEmpty()) {
             actual_val = Double.parseDouble(edit.getText().toString());
         } else {
             actual_val = 0;
+        }
+        igual = true;
+    }
+
+    //imprime el resultado de las operaciones y en el caso de ser entero lo pone sin punto decimal
+    public void resultado () {
+        int entero;
+
+        entero = (int) previous_val;
+        if (entero < previous_val) {
+            edit.setText("" + previous_val);
+        }
+        else {
+            edit.setText("" + entero);
         }
     }
 }

@@ -39,7 +39,7 @@
             android:gravity="end"
             android:textAlignment="textEnd"
             android:textSize="@dimen/normal_text_size"
-            android:maxLength="11"/>"
+            android:maxLength="10"/>"
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -50,7 +50,7 @@
             <Button android:id="@+id/b_clear_text"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:minWidth="@dimen/max_button_width"
+                android:minWidth="@dimen/large_button_width"
                 android:minHeight="@dimen/max_button_height"
                 android:background="@color/colorSpecial"
                 android:layout_marginLeft="@dimen/button_margin"
@@ -61,31 +61,11 @@
             <Button android:id="@+id/b_clear_mem"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:minWidth="@dimen/max_button_width"
+                android:minWidth="@dimen/large_button_width"
                 android:minHeight="@dimen/max_button_height"
                 android:background="@color/colorSpecial"
                 android:layout_marginRight="@dimen/button_margin"
                 android:text="@string/clear_mem"
-                android:textSize="@dimen/button_text_size"/>
-
-            <Button android:id="@+id/b_open"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:minWidth="@dimen/max_button_width"
-                android:minHeight="@dimen/max_button_height"
-                android:background="@color/colorPrimary"
-                android:layout_marginRight="@dimen/button_margin"
-                android:text="@string/copen"
-                android:textSize="@dimen/button_text_size"/>
-
-            <Button android:id="@+id/b_close"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:minWidth="@dimen/max_button_width"
-                android:minHeight="@dimen/max_button_height"
-                android:background="@color/colorPrimary"
-                android:layout_marginRight="@dimen/button_margin"
-                android:text="@string/close"
                 android:textSize="@dimen/button_text_size"/>
 
         </LinearLayout>
